@@ -29,11 +29,8 @@ class Plants(Resource):
         return response
     
     def post(self):
-        last_item = Plant.query.order_by(Plant.id.desc()).first().to_dict()
-        last_id = last_item['id']
         data = request.get_json()
         new_record = Plant(
-            id = last_id + 1,
             name=data['name'],
             image=data['image'],
             price = data['price']
